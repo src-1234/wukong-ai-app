@@ -1,0 +1,42 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.wukong.ai'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.wukong.ai"
+        minSdk 21
+        targetSdk 34
+        versionCode 2
+        versionName "1.1.0"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("../keystore/wukong.jks")
+            storePassword "wukong2026"
+            keyAlias "wukong"
+            keyPassword "wukong2026"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation 'com.google.zxing:core:3.5.3'
+}
